@@ -1,6 +1,6 @@
 # Flask Hello App
 
-Hi! This is a web app I built using Python and Flask. It's my first real web app and I'm pretty proud of it. Here's what it does and how to run it yourself.
+Hi people! This is a web app I built using Python and Flask. It's my first real web app and I'm proud of it. Here's what it does and how to run it yourself.
 
 ---
 
@@ -16,7 +16,7 @@ It also tracks how many times you've visited and shows your last 5 submissions o
 
 - **Python + Flask** — this is the main framework that runs the app
 - **SQLite + Flask-SQLAlchemy** — this is the database that saves users and visits as a simple file called `app.db`
-- **Werkzeug** — this handles passwords safely by scrambling them before saving (so even I can't read your password)
+- **Werkzeug** — this handles passwords safely by scrambling them before saving (so even I can't read your password. Actually, no one can :D)
 
 ---
 
@@ -40,6 +40,8 @@ The database file creates itself automatically so you don't need to set anything
 
 - You need to register an account before you can use the hello form
 - Passwords are never saved as plain text, they get scrambled for safety
-- The app is set to Singapore time (SGT) so the greetings match the right time of day
-- Please don't put this online as-is — the secret key needs to be changed first and debug mode should be turned off
+- The app is set to Singapore time (SGT) so the greetings match the right time of day 
+- - Please don't put this online as-is — the secret key needs to be changed first and debug mode should be turned off
+
+    Enjoy! :3
 

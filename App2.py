@@ -135,7 +135,7 @@ def hello():
     elif mood == "sleepy":
         response = "Go sleep! Stop playing on your device! :<"
     else:
-        response = "Go eat then..."
+        response = "Time for makan!"
 
     return render_template("hello lol.html", 
                            name=name, 
