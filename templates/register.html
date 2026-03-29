@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <h1 class="title">Create account</h1>
+    <p class="subtitle" style="margin-bottom:24px;">Join to start tracking your visits.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-box">
+          {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" class="form">
+      <div>
+        <label class="label">Username</label>
+        <input class="input" name="username" placeholder="e.g. Lele" required maxlength="80" autocomplete="username">
+      </div>
+      <div>
+        <label class="label">Password</label>
+        <input class="input" type="password" name="password" placeholder="Min. 6 characters" required autocomplete="new-password">
+      </div>
+      <button class="btn" type="submit">Create account →</button>
+    </form>
+
+    <p class="meta">Already have an account? <a href="/login">Login</a></p>
+  </div>
+</div>
+</body>
+</html>

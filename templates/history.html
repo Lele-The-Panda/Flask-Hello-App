@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your History</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page wide">
+  <div class="card">
+
+    <div class="navbar">
+      <div>
+        <h1 class="title">Your History</h1>
+        <p class="subtitle">Every time you've said hello.</p>
+      </div>
+      <div class="navbar-right">
+        <a class="btn secondary" href="/" style="padding:8px 14px;">← Home</a>
+        <a class="btn danger" href="/logout" style="padding:8px 14px;">Logout</a>
+      </div>
+    </div>
+
+    <!-- Mood breakdown stats -->
+    {% if mood_counts %}
+      <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom:28px;">
+        {% for mood, count in mood_counts.items() %}
+          <div class="stat-card">
+            <div style="font-size:22px; margin-bottom:4px;">
+              {% if mood == 'happy' %}😄{% elif mood == 'excited' %}🚀{% elif mood == 'sleepy' %}😴{% else %}🍜{% endif %}
+            </div>
+            <div class="stat-number" style="font-size:22px;">{{ count }}</div>
+            <div class="stat-label">{{ mood | capitalize }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <p class="section-title">All visits ({{ visits | length }} total)</p>
+
+    {% if visits %}
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name used</th>
+            <th>Mood</th>
+            <th>Date &amp; time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in visits %}
+          <tr>
+            <td style="color: var(--muted); font-size:12px;">{{ loop.index }}</td>
+            <td><strong>{{ v.name }}</strong></td>
+            <td>
+              <span class="mood-chip mood-{{ v.mood }}">
+                {% if v.mood == 'happy' %}😄{% elif v.mood == 'excited' %}🚀{% elif v.mood == 'sleepy' %}😴{% else %}🍜{% endif %}
+                {{ v.mood }}
+              </span>
+            </td>
+            <td style="color: var(--muted); font-size:13px;">
+              {{ v.created_at.strftime('%d %b %Y, %I:%M %p') }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="empty">
+        <p style="font-size:32px; margin-bottom:8px;">🌱</p>
+        <p>No visits yet. <a href="/" style="color:var(--accent);">Say your first hello!</a></p>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+</body>
+</html>

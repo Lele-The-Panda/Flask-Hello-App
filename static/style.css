@@ -1,0 +1,166 @@
+:root {
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1e4ed8;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border: #d1d5db;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: lightblue;
+  font-family: Garamond, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card */
+
+.card {
+  width: 400px;
+  min-height: 400px;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 15px;
+}
+
+.card h1 {
+  font-family: 'Lobster', cursive;
+}
+
+.card h2 {
+    font family: 'Courgette', cursive;
+    }
+
+.card p,
+.card ul {
+  margin: 5px 0;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.row {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Inputs */
+
+input,
+select {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+/* From Uiverse.io by Spacious74 */
+button {
+  font-size: 1.4em;
+  padding: 0.6em 0.8em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #000000b4;
+}
+
+.container {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  border-radius: 0.9em;
+  transition: all 0.4s ease;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 0.9em;
+  z-index: -10;
+  filter: blur(0);
+  transition: filter 0.4s ease;
+}
+
+.container:hover::before {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  filter: blur(1.2em);
+}
+.container:active::before {
+  filter: blur(0.2em);
+}
+
+/* From Uiverse.io by JkHuger */
+.btn {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff7576;
+  background-color: #2B3044;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  position: relative;
+  line-height: 10px;
+  border-radius: 7px;
+  box-shadow: 0px 1px 2px #2B3044,
+    0px 4px 16px #2B3044;
+  transform-style: preserve-3d;
+  transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  perspective: 600px;
+  transition: transform 0.1s;
+}
+
+.sp {
+  background: linear-gradient(
+      90deg,
+      #866ee7,
+      #ea60da,
+      #ed8f57,
+      #fbd41d,
+      #2cca91
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  display: block;
+}
+
+.btn:active {
+  transition: 0.3s;
+  transform: scale(0.8);
+}

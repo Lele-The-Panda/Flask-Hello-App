@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello {{ name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <div class="card">
+
+    <div class="navbar">
+      <div class="navbar-left">
+        <h1 class="title" style="font-size:22px;">Hello App 👋</h1>
+        {% if current_user %}
+          <span class="badge">{{ current_user.username }}</span>
+        {% endif %}
+      </div>
+        <div class="navbar-right">
+        {% if current_user %}
+          <a class="btn" href="/history" style="padding:4px 10px;">History</a>
+          <a class="btn" href="/logout" style="padding:4px 10px;">Logout</a>
+        {% else %}
+          <a class="btn" href="/login" style="padding:8px 14px;">Login</a>
+          <a class="btn" href="/register" style="padding:8px 14px;">Register</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-box">
+          {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <p class="subtitle" style="margin-bottom:24px;">
+      Tell us your name and how you're feeling today.
+    </p>
+
+    <form action="/hello" method="post" class="form">
+      <div>
+        <label class="label">Your name</label>
+        <input class="input" name="name" placeholder="e.g. Lele" required maxlength="80">
+      </div>
+      <div>
+        <label class="label">How are you feeling?</label>
+        <select class="input" name="mood">
+          <option value="happy">😄  Happy</option>
+          <option value="excited">🚀  Excited</option>
+          <option value="sleepy">😴  Sleepy</option>
+          <option value="hungry">🍜  Hungry</option>
+        </select>
+      </div>
+        <!-- From Uiverse.io by Spacious74 -->
+<div class="container">
+  <button class="button"  type="submit">Login
+  {% if current_user %}Say Hello →{% else %}Login to say hello{% endif %}</button>
+</div>
+    </form>
+
+    {% if not current_user %}
+      <p class="meta">You must be logged in to submit.</p>
+    {% endif %}
+
+  </div>
+</div>
+</body>
+</html>

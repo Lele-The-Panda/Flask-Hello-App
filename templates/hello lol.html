@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello, {{ name }}!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <div class="card">
+
+    <div class="navbar">
+      <h1 class="title">Hello, {{ name }}! 👋</h1>
+      <div class="navbar-right">
+      <a class="btn" href="/history" style="padding:4px 10px;">History</a>
+      <a class="btn" href="/logout" style="padding:4px 10px;">Logout</a>
+      </div>
+    </div>
+
+    <div class="greeting-box">
+      <p class="greeting-text">{{ greeting }}</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">{{ count }}</div>
+        <div class="stat-label">Total Visits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number mood-chip mood-{{ mood }}" style="font-size:22px; background:none; border:none; padding:0;">
+          {% if mood == 'happy' %}😄{% elif mood == 'excited' %}🚀{% elif mood == 'sleepy' %}😴{% else %}🍜{% endif %}
+        </div>
+        <div class="stat-label">{{ mood | capitalize }}</div>
+      </div>
+    </div>
+
+    <p class="section-title">Recent visits</p>
+    {% if history %}
+      <ul class="visitor-list">
+        {% for v in history %}
+          <li class="visitor-item">
+            <span>{{ v.name }}</span>
+            <span class="mood-chip mood-{{ v.mood }}">{{ v.mood }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty">No visits yet.</div>
+    {% endif %}
+
+    <hr class="divider">
+
+    <div style="display:flex; gap:10px;">
+      <a class="btn secondary" href="/" style="flex:1; text-align:center;">← Back</a>
+      <a class="btn" href="/history" style="flex:1; text-align:center;">View all →</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
