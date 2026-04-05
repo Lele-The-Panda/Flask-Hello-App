@@ -1,6 +1,6 @@
 # Flask Hello App
 
-Hi people! This is a web app I built using Python and Flask. It's my first real web app and I'm proud of it. Here's what it does and how to run it yourself.
+Hey there, people! This is a web app I built using Python and Flask. It's my first real web app and I'm proud of it. Here's what it does and how to run it yourself.
 
 ---
 
@@ -32,11 +32,11 @@ pip install flask flask-sqlalchemy werkzeug
 
 5. Open your browser and go to `http://127.0.0.1:5000`
 
-The database file creates itself automatically so you don't need to set anything up!
+The database file creates itself automatically so you don't need to set anything up! :D
 
 ---
 
-## A few things to know
+## A few things to note
 
 - You need to register an account before you can use the hello form
 - Passwords are never saved as plain text, they get scrambled for safety
